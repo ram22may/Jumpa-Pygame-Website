@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jumpa/Programmers.com</title>
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+
+  
+<nav>
+
+  <h1 class="logo">Jumpa</h1>
+  <!-- NAVIGATION MENU -->
+  <ul class="nav-buttons">
+
+    <li><a href="index.html" class="nav-btn">Home</a></li>
+    <li><a href="game.html" class="nav-btn">Game</a></li>
+    <li><a href="about.html" class="nav-btn">About</a></li>
+    <li><a href="programmers.html" class="nav-btn">Programmers</a></li>
+
+
+  </ul>
+
+  <!-- MODE TOGGLE BUTTON -->
+  <button class="modeToggle">BossMode</button>
+
+
+</nav>
+
+<!-- =====================================================
+     MAIN CONTENT AREA
+===================================================== -->
+<section class="container">
+
+  <!-- PAGE TITLE -->
+  <h2>Programmers</h2>
+
+
+  <!-- =====================================================
+       PROGRAMMER CARD TEMPLATE
+       (Each card = one team member)
+  ===================================================== -->
+
+  <!-- ================= PERSON 1 ================= -->
+  <div class="prog-card">
+
+    <div class="img-box">
+      <img src="hector.jpg" alt="Hector">
+      <!-- Image of programmer -->
+    </div>
+
+    <div>
+
+      <h3>Ramir Hector Narciso Ferrer</h3>
+      <!-- Name -->
+
+      <p>Programmer, Game Developer, Game Manager</p>
+      <!-- Role in project -->
+
+      <p><strong>QUOTE:</strong>
+        “Programming isn’t about what you know, it’s about what you can figure out.”
+      </p>
+      <!-- Motivation quote -->
+
+    </div>
+
+  </div>
+
+  <!-- ================= PERSON 2 ================= -->
+  <div class="prog-card">
+
+    <div class="img-box">
+      <img src="joem.jpg" alt="Joem">
+    </div>
+
+    <div>
+
+      <h3>Joem C. Roquiza</h3>
+      <p>Web Designer, Flowchart Manager</p>
+
+      <p><strong>QUOTE:</strong>
+        “Every great developer you know started as a beginner.”
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- ================= PERSON 3 ================= -->
+  <div class="prog-card">
+
+    <div class="img-box">
+      <img src="enzo.jpg" alt="Enzo">
+    </div>
+
+    <div>
+
+      <h3>Christian Enzo Ochoco</h3>
+      <p>Sound Effects Assistant</p>
+
+      <p><strong>QUOTE:</strong>
+        “First, solve the problem. Then, write the code.”
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- ================= PERSON 4 ================= -->
+  <div class="prog-card">
+
+    <div class="img-box">
+      <img src="athalia.jpg" alt="Athalia">
+    </div>
+
+    <div>
+
+      <h3>Athalia Delprado</h3>
+      <p>Sound Effects Manager</p>
+
+      <p><strong>QUOTE:</strong>
+        “The best error message is the one that never shows up.”
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- ================= PERSON 5 ================= -->
+  <div class="prog-card">
+
+    <div class="img-box">
+      <img src="jana.jpg" alt="Jana">
+    </div>
+
+    <div>
+
+      <h3>Janarie Catiguel</h3>
+      <p>Sound Effects Assistant</p>
+
+      <p><strong>QUOTE:</strong>
+        “Programming isn’t about what you know; it’s about what you can figure out.”
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =====================================================
+     FOOTER SECTION
+===================================================== -->
+<footer>
+  © 2026 Jumpa. Presented by Group 6 of Universidad de Dagupan.
+
+
+
+</footer>
+
+<!-- =====================================================
+     JAVASCRIPT (BOSS MODE SYSTEM)
+===================================================== -->
+<script>
+
+/* GET ALL TOGGLE BUTTONS */
+const buttons = document.querySelectorAll(".modeToggle");
+
+
+/* LOAD SAVED MODE */
+if (localStorage.getItem("mode") === "boss") {
+  document.body.classList.add("boss");
+}
+
+
+/* UPDATE BUTTON TEXT */
+function updateText() {
+
+  const isBoss = document.body.classList.contains("boss");
+
+  buttons.forEach(btn => {
+    btn.textContent = isBoss ? "Normal Mode" : "Boss Mode";
+  });
+
+}
+
+/* RUN ON PAGE LOAD */
+updateText();
+
+/* TOGGLE MODE ON CLICK */
+buttons.forEach(btn => {
+  btn.addEventListener("click", () => {
+
+    document.body.classList.toggle("boss");
+
+
+    localStorage.setItem(
+      "mode",
+      document.body.classList.contains("boss") ? "boss" : "normal"
+    );
+
+  });
+});
+
+</script>
+
+</body>
+</html>

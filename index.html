@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- =====================================================
+     PAGE TITLE
+===================================================== -->
+<title>Jumpa.com</title>
+
+<!-- =====================================================
+     CSS FILE LINK
+===================================================== -->
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- =====================================================
+     NAVIGATION BAR (GLOBAL)
+===================================================== -->
+<nav>
+
+<!--LOGO IN THE SIDE-->
+  <h1>Jumpa</h1>
+
+  <!-- NAV LINKS -->
+  <ul class="nav-buttons">
+
+    <li><a href="index.html" class="nav-btn">Home</a></li>
+    <li><a href="game.html" class="nav-btn">Game</a></li>
+    <li><a href="about.html" class="nav-btn">About</a></li>
+    <li><a href="programmers.html" class="nav-btn">Programmers</a></li>
+
+  </ul>
+
+  <!-- MODE TOGGLE BUTTON -->
+  <button class="modeToggle">Boss Mode</button>
+
+</nav>
+
+<!-- =====================================================
+     MAIN CONTENT AREA
+===================================================== -->
+<main class="container">
+
+  <!-- =====================================================
+       MAIN TITLE (HOME PAGE HEADER)
+  ===================================================== -->
+  <h1 class="big-title">KEEP THE GAME GOING!</h1>
+
+  <!-- =====================================================
+       GAME SECTION
+  ===================================================== -->
+
+  <!-- GAME TITLE (clickable link to game page) -->
+  <h1><a href="game.html" class="text">GAME:</a></h1>
+
+  <!-- FIRE PROJECTILE SECTION -->
+  <div class="mechanics-row">
+
+    <!-- IMAGE (fire projectile) -->
+    <img src="fire.jpg" alt="Fire projectile">
+
+    <!-- TEXT DESCRIPTION -->
+    <p>
+      <strong>Fire Projectile:</strong><br>
+      In Jumpa, enemies can launch a fire projectile toward the player.
+      This projectile travels in a straight path and damages anything it hits.
+      If the player is struck by the fire projectile, their health points (HP)
+      are reduced by 25. Players must avoid or dodge these attacks to survive
+      longer and prevent their HP from reaching zero.
+    </p>
+
+  </div>
+
+  <!-- GOLD MINE SECTION -->
+  <div class="mechanics-row">
+
+    <!-- IMAGE (mine system) -->
+    <img src="mine.jpg" alt="Gold mine">
+
+    <!-- TEXT DESCRIPTION -->
+    <p>
+      <strong>Gold Mine:</strong><br>
+      In Jumpa, players can explore a gold mine where they gather valuable gold resources.
+      By mining deposits scattered throughout the area, players earn gold that can be used as in-game currency.
+      This gold is essential for survival, as it allows players to purchase potions that restore health or provide helpful effects.
+      The more gold a player collects, the better equipped they become to face tougher challenges and enemies.
+    </p>
+
+  </div>
+
+  <!-- =====================================================
+       ABOUT SECTION
+       - Game description and purpose
+  ===================================================== -->
+  <section class="about">
+
+    <!-- CLICKABLE TITLE -->
+    <h1><a href="about.html" class="text">ABOUT:</a></h1>
+
+    <!-- ABOUT BOX -->
+    <div class="box wide-box about-text">
+
+      <p>
+        Jumpa is a fast-paced 2D action platformer that challenges players to survive in a dangerous and ever-changing world.
+        Every movement matters—timing, precision, and quick decision-making are the keys to staying alive.
+      </p>
+
+      <p>
+        As you progress, enemies become stronger and the environment more unforgiving,
+        pushing your skills to the limit. The game is designed to test not only your reflexes but also your strategy and adaptability.
+      </p>
+
+      <p>
+        Built using Python and Pygame, Jumpa is a passion project focused on delivering an exciting and challenging experience
+        inspired by classic platformer games.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- =====================================================
+       PROGRAMMERS SECTION
+       - Team members of the project
+  ===================================================== -->
+  <section class="programmers">
+
+    <!-- SECTION TITLE -->
+    <h1>PROGRAMMERS:</h1>
+
+    <!-- ===================== PROGRAMMER 1 ===================== -->
+    <a href="programmers.html" class="prog-card link-box">
+
+      <!-- IMAGE -->
+      <div class="img-box">
+        <img src="hector.jpg" alt="Hector">
+      </div>
+
+      <!-- TEXT INFO -->
+      <div class="text">
+        <h3>Ramir Hector Narciso Ferrer</h3>
+        <p>Programmer, Game Developer, Game Manager</p>
+
+        <!-- QUOTE -->
+        <p><strong>QUOTE:</strong> “Programming isn’t about what you know, it’s about what you can figure out.”</p>
+      </div>
+
+    </a>
+
+    <!-- ===================== PROGRAMMER 2 ===================== -->
+    <a href="programmers.html" class="prog-card link-box">
+
+      <!-- IMAGE -->
+      <div class="img-box">
+        <img src="joem.jpg" alt="Joem">
+      </div>
+
+      <!-- TEXT INFO -->
+      <div class="text">
+        <h3>Joem C. Roquiza</h3>
+        <p>Web Designer, Flowchart Manager</p>
+
+        <!-- QUOTE -->
+        <p><strong>QUOTE:</strong> “Every great developer you know started as a beginner.”</p>
+      </div>
+
+    </a>
+
+  </section>
+
+  <!-- =====================================================
+       CREDENTIALS SECTION
+       - Credits and references
+  ===================================================== -->
+  <section class="credentials">
+
+    <h3>CREDENTIALS</h3>
+
+    <p>• Game inspired by Super Mario</p>
+    <p>• Built with Python and Pygame</p>
+    <p>• Assets from free libraries</p>
+
+  </section>
+
+</main>
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+<footer>
+  © 2026 Jumpa. Presented by Group 6 of Universidad de Dagupan.
+</footer>
+
+<!-- =====================================================
+     JAVASCRIPT (BOSS MODE SYSTEM)
+     - Controls theme switching and saving mode
+===================================================== -->
+<script>
+
+/* SELECT ALL MODE BUTTONS */
+const buttons = document.querySelectorAll(".modeToggle");
+
+/* LOAD SAVED MODE FROM BROWSER */
+if (localStorage.getItem("mode") === "boss") {
+  document.body.classList.add("boss");
+}
+
+/* UPDATE TEXT FUNCTION */
+function updateText() {
+
+  const isBoss = document.body.classList.contains("boss");
+
+  /* CHANGE BUTTON TEXT */
+  buttons.forEach(btn => {
+    btn.textContent = isBoss ? "Normal Mode" : "Boss Mode";
+  });
+
+  /* CHANGE MAIN TITLE */
+  const title = document.querySelector(".big-title");
+
+  if (title) {
+    title.textContent = isBoss
+      ? "READY TO FIGHT?"
+      : "KEEP THE GAME GOING!";
+  }
+}
+
+/* RUN ON PAGE LOAD */
+updateText();
+
+/* TOGGLE MODE ON CLICK */
+buttons.forEach(btn => {
+  btn.addEventListener("click", () => {
+
+    document.body.classList.toggle("boss");
+
+    localStorage.setItem(
+      "mode",
+      document.body.classList.contains("boss") ? "boss" : "normal"
+    );
+
+    updateText();
+  });
+});
+
+</script>
+
+</body>
+</html>

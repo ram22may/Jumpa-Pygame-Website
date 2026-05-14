@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Jumap/about.com</title>
+
+<link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+
+
+<nav>
+
+  <h1>Jumpa</h1>
+  <!-- Website name / brand identity -->
+
+  <!-- NAVIGATION LINKS -->
+  <ul class="nav-buttons">
+
+    <li><a href="index.html" class="nav-btn">Home</a></li>
+    <!-- Goes to homepage -->
+
+    <li><a href="game.html" class="nav-btn">Game</a></li>
+    <!-- Goes to game mechanics page -->
+
+    <li><a href="about.html" class="nav-btn">About</a></li>
+    <!-- Current page (story page) -->
+
+    <li><a href="programmers.html" class="nav-btn">Programmers</a></li>
+    <!-- Team page -->
+
+  </ul>
+
+  <!-- MODE TOGGLE BUTTON -->
+  <button class="modeToggle">Boss Mode</button>
+
+
+</nav>
+
+<!-- =====================================================
+     MAIN CONTENT AREA
+===================================================== -->
+<section class="container">
+
+  <!-- =====================================================
+       STORY TITLE
+       - Introduces narrative section
+===================================================== -->
+  <h2>Story:</h2>
+
+  <div class="box story-layout">
+
+    <!-- ================= TEXT SIDE ================= -->
+    <div class="story-text">
+
+      <p>
+        Jumpa is a young knight from the kingdom of Valdoria, trained to protect the land from monsters and invaders.<br><br>
+
+        One day, a powerful ogre warlord named Gorvash the Breaker attacks the kingdom.<br><br>
+
+        Gorvash destroys villages and defeats the knight forces with overwhelming strength.<br><br>
+
+        During the battle, Jumpa’s mentor is killed right in front of him.<br><br>
+
+        Jumpa survives but is left full of grief and anger.<br><br>
+
+        He swears an oath of vengeance against Gorvash.<br><br>
+
+        Leaving the kingdom behind, Jumpa travels into dangerous lands where the ogre hides.<br><br>
+
+        Along the journey, he fights monsters and overcomes deadly challenges to grow stronger.<br><br>
+
+        Each battle brings him closer to the truth about Gorvash and his power.<br><br>
+
+        In the end, Jumpa reaches the ogre’s fortress, ready for a final battle to avenge his mentor.
+      </p>
+
+
+
+    </div>
+
+    <!-- ================= IMAGE SIDE ================= -->
+    <div class="story-image">
+
+      <img src="PLAYER.png" alt="Jumpa the Knight">
+
+
+
+    </div>
+
+  </div>
+
+  <br>
+
+
+  <h2>Overall Summary</h2>
+
+  <!-- SUMMARY BOX -->
+  <div class="box">
+
+    <p>
+      Jumpa is a 2D side-scrolling action-platform game made with Pygame where the player can move, jump, fight enemies, and use items like a sword, pickaxe, and healing potions.<br><br>
+
+      The player collects gold to buy potions and must manage health and resources while surviving obstacles and enemies.<br><br>
+
+      As the score increases, the game becomes harder.<br><br>
+
+      Eventually, an ogre boss appears and attacks with powerful projectiles, requiring careful timing and movement to defeat.<br><br>
+
+      The goal is to survive, defeat the boss, and win the game.<br><br>
+
+      If the player’s health reaches zero, it results in game over.
+    </p>
+
+
+
+  </div>
+
+</section>
+
+<!-- =====================================================
+     FOOTER SECTION
+===================================================== -->
+<footer>
+  © 2026 Jumpa. Presented by Group 6 of Universidad de Dagupan.
+
+
+
+</footer>
+
+
+<script>
+
+/* FIND ALL MODE BUTTONS */
+const buttons = document.querySelectorAll(".modeToggle");
+/*
+WHY:
+- Allows multiple buttons to control same system
+*/
+
+/* LOAD SAVED MODE */
+if (localStorage.getItem("mode") === "boss") {
+  document.body.classList.add("boss");
+}
+
+
+/* UPDATE BUTTON TEXT */
+function updateText() {
+
+  const isBoss = document.body.classList.contains("boss");
+
+
+  buttons.forEach(btn => {
+    btn.textContent = isBoss ? "Normal Mode" : "Boss Mode";
+  });
+
+
+}
+
+/* RUN ON PAGE LOAD */
+updateText();
+
+/* TOGGLE MODE */
+buttons.forEach(btn => {
+  btn.addEventListener("click", () => {
+
+    document.body.classList.toggle("boss");
+
+
+    localStorage.setItem(
+      "mode",
+      document.body.classList.contains("boss") ? "boss" : "normal"
+    );
+
+
+    updateText();
+  });
+});
+
+</script>
+
+</body>
+</html>

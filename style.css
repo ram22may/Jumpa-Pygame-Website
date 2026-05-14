@@ -1,0 +1,457 @@
+/* =========================
+   RESET (removes default browser spacing)
+========================= */
+* {
+  margin: 0; /* removes default space around elements */
+  padding: 0; /* removes default inner spacing */
+  box-sizing: border-box; 
+}
+
+
+/* =========================
+   THEME VARIABLES (default / normal mode)
+========================= */
+:root {
+  --sky: linear-gradient(to bottom, #cce7ff, #e6f4ff);
+  /* defines background sky gradient used across the site */
+
+  --grass: #4caf50;
+  /* green color used for ground/floor effect */
+
+  --card: #ffffff;
+  /* default background color for cards and navigation */
+
+  --text: #222;
+  /* default text color (dark gray) */
+
+  --accent: #87ceeb;
+  /* highlight color used for buttons, titles, hover effects */
+}
+
+
+/* =========================
+   BOSS MODE (overrides variables)
+========================= */
+body.boss {
+  --sky: linear-gradient(to bottom, #06130c, #0f2418);
+  /* dark version of sky background */
+
+  --grass: #1b5e3b;
+  /* darker green for ground in boss mode */
+
+  --card: #15261c;
+  /* dark background for UI cards */
+
+  --text: #d6ffe0;
+  /* light text color for dark mode readability */
+
+  --accent: #2ecc71;
+  /* bright green accent for boss mode theme */
+}
+
+/*
+
+
+/* =========================
+   BODY (main page styling)
+========================= */
+body {
+  font-family: Arial, sans-serif;
+  /* sets default font for entire website */
+
+  background: var(--sky);
+  /* applies sky background from variables */
+
+  color: var(--text);
+  /* sets default text color */
+
+  padding-top: 90px;
+  /* creates space so content doesn't go under fixed navbar */
+
+  transition: 0.4s ease;
+  /* smooth animation when switching themes */
+}
+
+
+/* GRASS FLOOR EFFECT */
+body::after {
+  content: "";
+  /* required for pseudo-element to appear */
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 120px;
+
+  background: var(--grass);
+  /* ground color depends on theme */
+
+  z-index: -1;
+  /* sends element behind all content */
+}
+
+
+/* =========================
+   NAVIGATION BAR
+========================= */
+nav {
+  position: fixed;
+  /* keeps navbar always visible at top */
+
+  top: 0;
+  width: 100%;
+
+  background: var(--card);
+  /* navbar color changes with theme */
+
+  display: flex;
+  /* aligns items horizontally */
+
+  justify-content: space-between;
+  /* spreads items left and right */
+
+  align-items: center;
+  /* vertically centers items */
+
+  padding: 15px 30px;
+
+  z-index: 1000;
+  /* keeps navbar above everything */
+}
+
+
+/* NAV LIST */
+nav ul {
+  display: flex;
+  /* makes menu horizontal */
+
+  list-style: none;
+  /* removes bullet points */
+
+  gap: 15px;
+  /* spacing between menu items */
+}
+
+
+/* NAV BUTTON STYLE */
+.nav-btn {
+  display: inline-block;
+
+  padding: 10px 18px;
+  /* space inside button */
+
+  border-radius: 10px;
+  /* rounded corners */
+
+  background: #fff;
+  color: #222;
+
+  text-decoration: none;
+  /* removes underline */
+
+  font-weight: bold;
+
+  box-shadow: 0 6px 0 #bdbdbd;
+  /* gives 3D button effect */
+
+  transition: 0.25s ease;
+  /* smooth hover animation */
+}
+
+
+/* NORMAL MODE HOVER */
+body:not(.boss) .nav-btn:hover {
+  transform: translateY(-4px);
+  /* button moves up slightly */
+
+  background: #e8f7ff;
+  color: #2b7cff;
+}
+
+
+/* BOSS MODE NAV STYLE */
+body.boss .nav-btn {
+  background: #1f2f25;
+  color: #d6ffe0;
+
+  box-shadow: 0 6px 0 #0b1a12;
+}
+
+
+/* BOSS MODE HOVER */
+body.boss .nav-btn:hover {
+  background: #2ecc71;
+  color: #000;
+
+  transform: translateY(-4px);
+}
+
+
+/* MODE TOGGLE BUTTON */
+.modeToggle {
+  width: 140px;
+  height: 40px;
+
+  font-weight: bold;
+
+  border: none;
+  border-radius: 10px;
+
+  cursor: pointer;
+  /* shows pointer when hovering */
+
+  background: var(--accent);
+
+  transition: 0.3s ease;
+}
+
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+.title-game {
+  font-size: 3rem;
+  text-align: center;
+  margin: 40px 0;
+}
+
+
+/* centers page content */
+.container {
+  width: 80%;
+  margin: auto;
+  padding: 30px;
+}
+
+
+/* =========================
+   LOOPING VIDEO
+========================= */
+.hero-box {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+
+
+/* =========================
+   MAIN TITLE
+========================= */
+.big-title {
+  font-size: 3rem;
+  text-align: center;
+  margin: 40px 0;
+}
+
+
+/* =========================
+   CARDS (PROGRAMMERS)
+========================= */
+.prog-card {
+  background: var(--card);
+
+  padding: 15px;
+  margin: 15px 0;
+
+  border-radius: 10px;
+
+  display: flex;
+  gap: 15px;
+
+  transition: 0.3s;
+}
+
+
+/* hover effect */
+.prog-card:hover {
+  transform: scale(1.03);
+  background: var(--accent);
+  color: #000;
+}
+
+
+/* image container */
+.img-box {
+  width: 100px;
+  height: 100px;
+
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+
+/* image fit */
+.img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* =========================
+  GAME MECHANICS
+========================= */
+.mechanics-container {
+  padding: 100px;
+}
+
+
+/* row layout */
+.mechanics-row {
+  display: flex;
+  align-items: justify;
+  justify-content: space-between;
+
+  margin-bottom: 40px;
+  gap: 40px;
+}
+
+
+/* reverse layout */
+.mechanics-row.reverse {
+  flex-direction: row-reverse;
+}
+
+
+/* images */
+.mechanics-row img {
+  width: 45%;
+  border-radius: 10px;
+}
+
+
+/* text */
+.mechanics-row p {
+  width: 45%;
+  font-size: 18px;
+}
+
+
+/* =========================
+   BOX (ABOUT SECTION)
+========================= */
+.box {
+  background: rgba(255, 255, 255, 0.85);
+
+  padding: 20px;
+
+  border-radius: 12px;
+
+  border: 2px solid rgba(0,0,0,0.1);
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+
+  backdrop-filter: blur(4px);
+
+  transition: 0.3s ease;
+}
+
+
+/* boss mode box */
+body.boss .box {
+  background: rgba(20, 40, 30, 0.9);
+  border: 2px solid #2ecc71;
+  color: #d6ffe0;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+  text-align: center;
+
+  padding: 15px;
+
+  background: var(--card);
+
+  margin-top: 20px;
+}
+
+/* section layout helpers */
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 40px;
+}
+
+.section.reverse {
+  flex-direction: row-reverse;
+}
+
+
+
+/* text styling */
+.text {
+  width: 50%;
+  text-decoration: none;
+  color: var(--text);
+  transition: 0.3s;
+}
+
+
+
+/* credentials section */
+.credentials {
+  margin-top: 80px;
+  padding: 30px;
+
+  background: var(--card);
+  color: var(--text);
+
+  border-radius: 10px;
+
+  transition: 0.3s ease;
+}
+
+
+/* story layout */
+.story-layout {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+
+/* story text */
+.story-text {
+  flex: 2;
+}
+
+
+/* story image */
+.story-image {
+  flex: 1;
+}
+
+
+/* story image styling */
+.story-image img {
+  width: 100%;
+  max-width: 300px;
+
+  border-radius: 10px;
+}
+
+
+/* link reset */
+.link-box {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+/* title styling */
+.title {
+  font-size: 28px;
+  font-weight: bold;
+
+  margin-bottom: 10px;
+
+  text-align: center;
+}

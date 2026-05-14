@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jumpa/game.com</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav>
+
+  <!-- WEBSITE NAME / BRAND -->
+  <h1>Jumpa</h1>
+
+
+  <!-- NAVIGATION LINKS -->
+  <ul class="nav-buttons">
+
+
+    <li><a href="index.html" class="nav-btn">Home</a></li>
+    <!-- Links to homepage -->
+
+    <li><a href="game.html" class="nav-btn">Game</a></li>
+    <!-- Links to game mechanics page -->
+
+    <li><a href="about.html" class="nav-btn">About</a></li>
+    <!-- Links to story/info page -->
+
+    <li><a href="programmers.html" class="nav-btn">Programmers</a></li>
+    <!-- Links to team section -->
+
+  </ul>
+
+  <!-- MODE TOGGLE BUTTON -->
+  <button class="modeToggle">BossMode</button>
+
+
+</nav>
+
+<!-- =====================================================
+     MAIN TITLE SECTION
+===================================================== -->
+<h1 class="title-game">JUMPA</h1>
+
+
+
+<!-- =====================================================
+     MAIN CONTENT CONTAINER
+===================================================== -->
+<section class="container">
+
+  <!-- HERO VIDEO SECTION -->
+  <div class="hero-box">
+    <!-- <video loop autoplay src="naks.mp4" width="75%"></video> -->
+     
+    <img src="naks.jpg" alt="" width="75%">
+
+
+
+  </div>
+
+</section>
+
+
+<section class="mechanics-container">
+
+  <h2>Game Mechanics:</h2>
+
+  <div class="mechanics-row">
+
+    <img src="fire.jpg" alt="Fire projectile">
+
+
+    <p>
+      <strong>Fire Projectile:</strong><br>
+      In Jumpa, enemies can launch a fire projectile toward the player.
+      This projectile travels in a straight path and damages anything it hits.
+      If the player is struck by the fire projectile, their health points (HP)
+      are reduced by 25. Players must avoid or dodge these attacks to survive
+      longer and prevent their HP from reaching zero.
+    </p>
+
+  </div>
+
+  <!-- =====================================================
+       GOLD MINE SYSTEM
+  ===================================================== -->
+  <div class="mechanics-row reverse">
+
+    <img src="mine.jpg" alt="Gold mine">
+
+    <p>
+      <strong>Gold Mine:</strong><br>
+      In Jumpa, players can explore a gold mine where they gather valuable gold resources.
+      By mining deposits scattered throughout the area, players earn gold that can be used as in-game currency.
+      This gold is essential for survival, as it allows players to purchase potions that restore health or provide helpful effects.
+      The more gold a player collects, the better equipped they become to face tougher challenges and enemies.
+    </p>
+
+  </div>
+
+  <!-- =====================================================
+       POTION SYSTEM
+  ===================================================== -->
+  <div class="mechanics-row">
+
+    <img src="potion.jpg" alt="Potion">
+
+    <p>
+      <strong>Potion:</strong><br>
+      The potion is an essential healing item in the game. When used, it restores 25 HP to the player. 
+      Potions are very important during combat, especially when fighting strong enemies or the boss. 
+      Players must manage their potions wisely because they are limited.
+    </p>
+
+  </div>
+
+  <!-- =====================================================
+       PICKAXE SYSTEM
+  ===================================================== -->
+  <div class="mechanics-row reverse">
+
+    <img src="pick.jpg" alt="Pickaxe">
+
+    <p>
+      <strong>Pickaxe:</strong><br>
+      The pickaxe is the required tool for mining gold in the gold mine. 
+      Without the pickaxe, the player cannot collect resources. 
+      It allows the player to break rocks and gather gold efficiently, 
+      which is used for survival upgrades like potions.
+    </p>
+
+  </div>
+
+  <!-- =====================================================
+       SWORD SYSTEM
+  ===================================================== -->
+  <div class="mechanics-row">
+
+    <img src="swrd.jpg" alt="Sword">
+
+    <p>
+      <strong>Sword:</strong><br>
+      The sword is the main weapon used by the player. 
+      It is the only equipment capable of damaging enemies and the boss. 
+      Every attack with the sword is important because it is the key to 
+      defeating strong enemies and completing the game.
+    </p>
+
+  </div>
+
+  <!-- =====================================================
+       OGRE BOSS SYSTEM
+  ===================================================== -->
+  <div class="mechanics-row reverse">
+
+    <img src="ogre.jpg" alt="Ogre boss">
+
+    <p>
+      <strong>Ogre:</strong><br>
+      The ogre is the main boss that appears when the player reaches a score of 25. 
+      It is a powerful enemy that attacks by launching three projectiles downward at the same time. 
+      If the player is hit, they lose 25 HP. To defeat the ogre, the player must dodge attacks, 
+      use the sword effectively, and rely on potions for healing.
+    </p>
+
+  </div>
+
+</section>
+
+<!-- =====================================================
+     FOOTER SECTION
+===================================================== -->
+<footer>
+  © 2026 Jumpa. Presented by Group 6 of Universidad de Dagupan.
+
+
+</footer>
+
+<
+<script>
+
+/* GET ALL MODE BUTTONS */
+const buttons = document.querySelectorAll(".modeToggle");
+
+
+
+/* LOAD SAVED MODE */
+if (localStorage.getItem("mode") === "boss") {
+  document.body.classList.add("boss");
+}
+
+
+
+/* UPDATE BUTTON TEXT FUNCTION */
+function updateText() {
+
+  const isBoss = document.body.classList.contains("boss");
+
+  buttons.forEach(btn => {
+    btn.textContent = isBoss ? "Normal Mode" : "Boss Mode";
+  });
+  
+
+}
+
+/* RUN ON PAGE LOAD */
+updateText();
+
+
+/* TOGGLE MODE WHEN CLICKED */
+buttons.forEach(btn => {
+  btn.addEventListener("click", () => {
+
+    document.body.classList.toggle("boss");
+
+
+    localStorage.setItem(
+      "mode",
+      document.body.classList.contains("boss") ? "boss" : "normal"
+    );
+
+    updateText();
+
+  });
+});
+
+</script>
+
+</body>
+</html>
